@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+
+}
+
+/*
+.container .text {
+    position: relative;
+    color: black;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.container .text .first-text {
+    color: white;
+
+}
+
+.text.sec-text:before {
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+*/
+body {
+    
+    min-height: 100vh; /*ra de chill y seme olvidó*/
+    width: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: lightgray;
+    position: relative;  /* segun google que para que todo lo que posicione sea relatiov al body*/
+
+}
+
+body::before { /* el selector p pooner cosas antes de algo */
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    clip-path: inset(50% 0 0 0); /* un rectangulo que ocupa la mitad del body en el bottom*/
+    z-index: -1; /* atras de todo*/
+
+}
+.container {
+    max-width: 950px; /*no SE*/
+    /*background-color: red;*/
+    width: 100%;
+    padding: 80px 0;
+    overflow: hidden; /* muajaj y no se ve comotequedass*/
+}
+
+.container .main-card {
+    width: 200%; /* ps ya ni modo*/
+    /*background-color: grey;*/
+    display: flex;
+    justify-content: space-around; /*space-evenly*/
+    transition: all 2s ease;
+}
+
+#two:checked ~ .main-card { /* cuando se triggerée todos los siguientes elemnts main-card...*/
+    margin-left: -100%; /* que se vaya hasta donde no sea visible y la otra column sí */
+
+}
+
+.main-card .cards {
+    width: calc(100% / 2 - 10px); /* para que sea constante en todos los devices?*/ 
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-card .cards .card {
+    background-color: white;
+    width: calc(100% / 3 - 10px);
+    padding: 30px 10px;
+    border-radius: 20px;
+    margin: 0 20px;
+    transition: all 0.4s ease;
+}
+
+.main-card .cards .card:hover {
+    transform:translateY(15px); /* hover pq salten juasjuas*/
+}
+.cards .card .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+.cards .card .content .img {
+    height: 130px;
+    width: 130px;
+    margin-bottom: 15px;
+    background-color: red;
+    padding: 3px;
+    border-radius: 50%;
+
+}
+
+.card .content .img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid white;
+}
+
+.card .content .details .name {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.card .content .details .job {
+    font-size: 0.60em;
+    color: red;
+}
+
+.card .content .media-icons img {
+    height: 30px;
+    width: 30x;
+    background: red;
+    margin: 0 4px;
+    border-radius: 50%;
+    padding: 5px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 15px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    
+    
+}
+
+.card .content .media-icons {
+    display: flex;
+    margin-top: 10px;
+}
+
+.content .media-icons img:hover {
+    border-color: black;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* BOTONS DE SCROLL */
+.button {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+
+.button label { /* se puede poner classes a labels q */
+    height: 15px;
+    width: 15px;
+    border-radius: 20px;
+    background-color: white;
+    margin: 0 4px;
+
+    /* transition pq no se vea feito */
+    transition: all 0.5s ease;
+}
+
+.button label.active { /* .one o .active es lo mismo. así se ve bonito */
+    width: 35px; /* se hace anchito pq parzca un slider y no dos puntitos separdos */
+    
+}
+
+/* este estuvo cawn */
+
+#one:checked ~ .button label.one { /* va a triggerear los elementos quedespués de estar checkesdo cumplen con esas clases */
+    width: 35px; /* se checkea el rpiermero, so se hace anchito*/
+}
+
+#two:checked ~.button label.two{
+    width: 35px; /*se checkea el segundo radio y el segundo labelse hace anchito*/
+} 
+#two:checked ~ .button label.one{
+    width: 15px; /* se checkea el segundo radioy el primer label se hace chiquito */
+}
+
+#one:checked ~ .button label.two {
+    width: 15px; /* se chequea el primer radio y el seundo label dse hace chiquito */
+}
+
+input[type="radio"] { /* desaparecer los radios jejshj*/
+    display: none;
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 760px)  {
+    .main-card .cards .card {
+        width: calc(100% / 2 - 10px);
+        margin: 20px 0 10px 0;
+
+    }
+}
+
+@media (max-widh: 600px) {
+    .main-card .cards .card {
+        width: 100%;
+    }
+}
