@@ -7,28 +7,87 @@
 
 }
 
-/*
-.container .text {
-    position: relative;
-    color: black;
-    font-size: 30px;
-    font-weight: 600;
-}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
-.container .text .first-text {
-    color: white;
-
-}
-
-.text.sec-text:before {
-    content: '';
+.animated-text {
+    text-align: center;
     position: absolute;
-    top:0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    top: 10%;
+    left: 38%;
+    font-size: 3em;
+    min-width: 280px;
+    color: white;
 }
-*/
+
+.animated-text span {
+    position:relative;
+}
+
+.animated-text span::before {
+    content: "team.";
+    font-weight: bold;
+    color: red;
+    animation: words 23.5s infinite;
+
+}
+
+.animated-text span::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: black;
+    border-left: 1px solid rgb(235, 114, 114);
+    right: -12px;
+    animation: cursor-blink 0.75s infinite, typing 23s steps(14) infinite;
+}
+
+@keyframes cursor-blink {
+    to {
+        border-left: 2px solid transparent; /* es lo mismo que 100% en teoría */
+    }
+}
+
+@keyframes words {
+    0%, 20% {
+        content: "team.";
+    }
+
+    21%, 40% {
+        content: "family.";
+    }
+
+    41%, 60% {
+        content: " talent.";
+    }
+
+    61%, 80% {
+        content: "torque.";
+    }
+
+    81%, 100% {
+        content: "power.";
+    }
+    
+}
+
+@keyframes typing {
+
+    
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
+        /*width: calc(100% + 12px);*/
+        width: 0;
+    }
+    5%, 20%, 25%, 40%, 60%, 65%, 80%, 85% {
+        width: calc(100% + 12px);
+       /* width: 0;*/
+    }
+    
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
 body {
     
     min-height: 100vh; /*ra de chill y seme olvidó*/
@@ -37,7 +96,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: lightgray;
+    background: black;
     position: relative;  /* segun google que para que todo lo que posicione sea relatiov al body*/
 
 }
@@ -58,37 +117,53 @@ body::before { /* el selector p pooner cosas antes de algo */
     width: 100%;
     padding: 80px 0;
     overflow: hidden; /* muajaj y no se ve comotequedass*/
+   
 }
 
-.container .main-card {
+.container .main-card, 
+.container .second-card {
     width: 200%; /* ps ya ni modo*/
     /*background-color: grey;*/
     display: flex;
     justify-content: space-around; /*space-evenly*/
     transition: all 2s ease;
 }
+/* +++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++++++*/ 
 
 #two:checked ~ .main-card { /* cuando se triggerée todos los siguientes elemnts main-card...*/
     margin-left: -100%; /* que se vaya hasta donde no sea visible y la otra column sí */
 
 }
+/* +++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++++++*/ 
+/* +++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++++++*/ 
 
-.main-card .cards {
+#two-second:checked ~ .second-card:not(.main-card) { /* cuando se triggerée todos los siguientes elemnts main-card...*/
+    margin-left: -100%; /* que se vaya hasta donde no sea visible y la otra column sí */
+
+}
+/* +++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++++++*/ 
+
+.main-card .cards,
+.second-card .cards {
     width: calc(100% / 2 - 10px); /* para que sea constante en todos los devices?*/ 
     display: flex;
     justify-content: space-between;
 }
 
-.main-card .cards .card {
+/* Se le puede poner un hover a cada una para poner una frase inspiradora */
+.main-card .cards .card,
+.second-card .cards .card {
     background-color: white;
     width: calc(100% / 3 - 10px);
+    /*height: 350px;*/
     padding: 30px 10px;
     border-radius: 20px;
     margin: 0 20px;
     transition: all 0.4s ease;
 }
 
-.main-card .cards .card:hover {
+.main-card .cards .card:hover,
+.second-card .cards .card:hover {
     transform:translateY(15px); /* hover pq salten juasjuas*/
 }
 .cards .card .content {
@@ -172,7 +247,8 @@ body::before { /* el selector p pooner cosas antes de algo */
     transition: all 0.5s ease;
 }
 
-.button label.active { /* .one o .active es lo mismo. así se ve bonito */
+.button label.active,
+.button label.active-second { /* .one o .active es lo mismo. así se ve bonito */
     width: 35px; /* se hace anchito pq parzca un slider y no dos puntitos separdos */
     
 }
@@ -194,9 +270,28 @@ body::before { /* el selector p pooner cosas antes de algo */
     width: 15px; /* se chequea el primer radio y el seundo label dse hace chiquito */
 }
 
+/* +++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++++++*/ 
+
+#one-second:checked ~ .button label.one.active-second { /* va a triggerear los elementos quedespués de estar checkesdo cumplen con esas clases */
+    width: 35px; /* se checkea el rpiermero, so se hace anchito*/
+}
+
+#two-second:checked ~.button label.two-second{
+    width: 35px; /*se checkea el segundo radio y el segundo labelse hace anchito*/
+} 
+#two-second:checked ~ .button label.one.active-second{
+    width: 15px; /* se checkea el segundo radioy el primer label se hace chiquito */
+}
+
+#one-second:checked ~ .button label.two-second {
+    width: 15px; /* se chequea el primer radio y el seundo label dse hace chiquito */
+}
+
 input[type="radio"] { /* desaparecer los radios jejshj*/
     display: none;
 }
+
+/* +++++++++++++++++++++++++++++++ +++++++++++++++++++++++++++++++++++*/ 
 
 /* RESPONSIVENESS */
 

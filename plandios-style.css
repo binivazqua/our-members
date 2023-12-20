@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0; 
+    display:flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.animated-text {
+    font-size: 34px;
+    min-width: 280px;
+}
+
+.animated-text span {
+    position:relative;
+}
+
+.animated-text span::before {
+    content: "team.";
+    color: red;
+    animation: words 23.5s infinite;
+
+}
+
+.animated-text span::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: white;
+    border-left: 1px solid grey;
+    right: -12px;
+    animation: cursor-blink 0.75s infinite, typing 23s steps(14) infinite;
+}
+
+@keyframes cursor-blink {
+    to {
+        border-left: 2px solid transparent; /* es lo mismo que 100% en teoría */
+    }
+}
+
+@keyframes words {
+    0%, 20% {
+        content: "team.";
+    }
+
+    21%, 40% {
+        content: "family.";
+    }
+
+    41%, 60% {
+        content: " talent.";
+    }
+
+    61%, 80% {
+        content: "torque.";
+    }
+
+    81%, 100% {
+        content: "power.";
+    }
+    
+}
+
+@keyframes typing {
+
+    
+    10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
+        /*width: calc(100% + 12px);*/
+        width: 0;
+    }
+    5%, 20%, 25%, 40%, 60%, 65%, 80%, 85% {
+        width: calc(100% + 12px);
+       /* width: 0;*/
+    }
+    
+}
+
+
+

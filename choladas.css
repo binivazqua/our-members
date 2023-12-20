@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.container-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+.container-end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    padding-top: 0px;
+    margin:0;
+    position:absolute;
+    top: 0px;
+    right: 572px;
+}
+
+.typewriter h1 { /* not selector */
+    font-family: 'Inter', sans-serif;
+    font-size: 3em;
+    overflow: hidden;
+    border-right: 2px solid rgb(204, 88, 88);
+    white-space: nowrap;
+    /*margin: 0 auto;*/
+    animation:
+        type 3s steps(17, end),
+        blink 0.75s step-end infinite,
+        type-reverse 2s steps(17, end);
+}
+
+
+#family {
+    font-size: 3em;
+    color: transparent;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    border-right: blue;
+    white-space: nowrap;ss
+    animation:
+        type 1.8s steps(17, end),
+        blink 0.75s step-end infinite;
+}
+
+.reverse-typewriter h2{
+
+    font-family: 'Inter', sans-serif;
+    font-size: 3em;
+    overflow: hidden;
+    position: relative;
+    top: 3px;
+    border-right: 2px solid rgb(204, 88, 88);
+    white-space: nowrap;
+
+    
+
+    animation: type-reverse 1.8s steps(17, end), blink 0.75s step-end infinite; /* type 2s steps(17,end);*/
+  
+
+    animation-fill-mode: forwards;
+
+    
+}
+/*
+.reverse-typewriter h2{
+
+    font-family: 'Inter', sans-serif;
+    font-size: 3em;
+    overflow: hidden;
+    position: relative;
+    top: 3px;
+    border-right: 2px solid rgb(204, 88, 88);
+    white-space: nowrap;
+
+    
+
+    animation: type-reverse 3s steps(17, end), blink 0.75s step-end infinite, type 2s steps(17,end);
+  
+
+    animation-fill-mode: backwards;
+
+        
+}
+*/
+@keyframes type {
+    from {width: 0%}
+    to {width: 150%}
+
+
+}
+
+@keyframes blink {
+    from, to {border-color: transparent}
+
+    50% {
+        border-color: rgb(204, 88, 88);
+    }
+
+}
+
+@keyframes dissapear {
+    from, to {color: black}
+
+    100% {
+        color: transparent;
+    }
+}
+
+@keyframes blink-reverse {
+
+    from, to {border-color: transparent}
+
+    50% {
+        border-color: blue;
+    }
+
+}
+@keyframes type-reverse {
+    from {width: 100%}
+    to {width: 0%}
+ 
+}
+
+
